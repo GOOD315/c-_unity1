@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Permissions;
+using Code.Interfaces;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-namespace RollingBall
+namespace Code
 {
-    public class PlayerBall : MonoBehaviour
+    public sealed class PlayerBall : MonoBehaviour, IChangeSpeed, IApplyDamage
     {
-        public float Speed = 3.0f;
+        private float Speed = 100f;
+        private float Health = 100f;
         private Rigidbody _rigidbody;
 
         private void Start()
@@ -22,7 +26,7 @@ namespace RollingBall
 
             Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical).normalized;
 
-            _rigidbody.AddForce(movement*Speed);
+            _rigidbody.AddForce(movement * Speed);
             //_rigidbody.velocity = movement * Speed;
         }
 
@@ -30,7 +34,21 @@ namespace RollingBall
         {
             Move();
         }
-        
+
+        public void ChangeSpeed(float speed)
+        {
+            Speed += speed;
+        }
+
+        public void ApplyDamage(float damage)
+        {
+            Health -= damage;
+            if (Health <= 0) Die();
+        }
+
+        private void Die()
+        {
+            print("umer muzhik");
+        }
     }
-    
 }
