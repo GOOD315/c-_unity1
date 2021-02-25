@@ -15,7 +15,7 @@ namespace Code
 
         private void OnTriggerEnter(Collider col)
         {
-            if (!IsInteractable || col.CompareTag("Player") || col.CompareTag("PlayerBullet")) return;
+            if (!IsInteractable || !col.CompareTag("Player") && !col.CompareTag("PlayerBullet")) return;
             Interaction(col);
         }
     }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Security.AccessControl;
 using UnityEditor;
 using UnityEngine;
+using Object = System.Object;
 using Random = UnityEngine.Random;
 
 namespace Code
@@ -17,19 +18,21 @@ namespace Code
 
         private Dictionary<Transform, bool> spawnPoints;
         private List<Transform> spawnPointsKeys;
-        private List<GameObject> trapsList;
-
-        private int ActiveTraps = 0;
-        private int maxActiveTraps = 10;
+        private Object[] trapsList;
 
         private void Awake()
         {
+            activeSpawnObjectsCnt = 0;
+            maxSpawnObjectsCnt = 10;
+
             FindSpawnPoints();
             FindSpawnObjects();
+        }
 
-            for (int i = 0; i < spawnPoints.Count; i++)
-            {
-            }
+        public override void CallSpawner(TrapSpawnController controller)
+        {
+            controller.currentTrapsCnt -= 1;
+            print("ff");
         }
 
         public override void FindSpawnPoints()
@@ -45,36 +48,28 @@ namespace Code
             }
         }
 
-        // хочу сделать отдельное хранилище мин, и из него уже считывать, что бы можно было спокойно туда их добавлять и убирать, но не знаю как
-        // сейчас пока просто костыль
         public override void FindSpawnObjects()
         {
-            trapsList = new List<GameObject>();
-
-            trapsList.Add(HealingTrap);
-            trapsList.Add(DamageTrap);
-            trapsList.Add(HasteTrap);
-            trapsList.Add(SlowTrap);
+            trapsList = Resources.LoadAll("MyAssets/Traps", typeof(GameObject));
         }
 
-        public override void Spawn()
+        public override void SpawnTraps(TrapSpawnController spawnContr)
         {
+            if (spawnPointsKeys.Count == 0 || trapsList.Length == 0) return;
+
             var cnt = Random.Range(0, spawnPointsKeys.Count - 1);
             if (spawnPoints[spawnPointsKeys[cnt]] == false)
             {
                 spawnPoints[spawnPointsKeys[cnt]] = true;
-                var mineType = Random.Range(0, trapsList.Count - 1);
-                print($"{spawnPointsKeys[cnt].position.x} - {spawnPointsKeys[cnt].position.y} - {spawnPointsKeys[cnt].position.z}");
-                GameObject temp = Instantiate(trapsList[mineType], spawnPointsKeys[cnt]);
+                var mineType = Random.Range(0, trapsList.Length - 1);
+
+                Spawn((GameObject) trapsList[mineType], spawnPointsKeys[cnt], spawnContr);
             }
-
-            ActiveTraps++;
         }
-
 
         private void Update()
         {
-            if (ActiveTraps < maxActiveTraps) Spawn();
+            // if (activeSpawnObjectsCnt < maxSpawnObjectsCnt) SpawnTraps();
         }
     }
 }

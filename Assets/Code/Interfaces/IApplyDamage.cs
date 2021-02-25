@@ -1,4 +1,4 @@
-﻿namespace Code.Interfaces
+﻿namespace Code
 {
     public interface IApplyDamage
     {

@@ -2,14 +2,14 @@
 
 namespace Code
 {
-    public sealed class DamageTrap : Trap
+    public sealed class HealingTrap : Trap
     {
         public override void Interaction(Collider col)
         {
             base.Interaction(col);
-            if (col.TryGetComponent(out IApplyDamage applyDamage))
+            if (col.TryGetComponent(out IApplyHeal applyHeal))
             {
-                applyDamage.ApplyDamage(1000f);
+                applyHeal.ApplyHeal(10f);
             }
         }
     }

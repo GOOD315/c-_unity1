@@ -2,7 +2,7 @@
 
 namespace Code
 {
-    public class SlowTrap : Trap
+    public sealed class SlowTrap : Trap
     {
         public override void Interaction(Collider col)
         {

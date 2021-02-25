@@ -8,10 +8,16 @@ namespace Code
 {
     public abstract class Trap : InteractiveObject, ICloneable
     {
+        public delegate void callTrapController(TrapSpawnController controller);
+
+        public TrapSpawnController controller;
+        public callTrapController callController;
+
+
         public override void Interaction(Collider col)
         {
             // CODE
-            print($"{name} - SRABOTALA");
+            callController(controller);
             Destroy(gameObject);
         }
 

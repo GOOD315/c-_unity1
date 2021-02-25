@@ -7,6 +7,6 @@ namespace Code
 {
     public interface ISpawner
     {
-        void Spawn();
+        void Spawn(GameObject obj, Transform place, TrapSpawnController controller);
     }
 }

@@ -13,8 +13,6 @@ namespace Code
             {
                 changeSpeed.ChangeSpeed(100f);
             }
-
-            print($"dal speed - {col.name}");
         }
     }
 }
