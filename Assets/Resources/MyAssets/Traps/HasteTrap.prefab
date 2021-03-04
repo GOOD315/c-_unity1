@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5847591134984089669}
   - component: {fileID: 228526743103863918}
   - component: {fileID: 6316769809346944772}
-  - component: {fileID: 7508117940912485814}
+  - component: {fileID: 4746374445797850730}
   m_Layer: 0
   m_Name: HasteTrap
   m_TagString: Untagged
@@ -94,7 +94,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7508117940912485814
+--- !u!114 &4746374445797850730
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

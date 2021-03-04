@@ -11917,7 +11917,6 @@ GameObject:
   - component: {fileID: 2057234568}
   - component: {fileID: 2057234567}
   - component: {fileID: 2057234566}
-  - component: {fileID: 2057234570}
   - component: {fileID: 2057234571}
   m_Layer: 0
   m_Name: PlayerSphere
@@ -12000,18 +11999,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2057234570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2057234565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cd1dcd9c89300141a91404e0e48fd90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &2057234571
 Rigidbody:
   m_ObjectHideFlags: 0
