@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TrapSpawnPoint
   - PlayerBullet
+  - Spawner
   layers:
   - Default
   - TransparentFX
