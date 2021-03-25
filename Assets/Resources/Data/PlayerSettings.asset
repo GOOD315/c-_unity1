@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bea59be9f9bd4d16ad49d8802194d3a8, type: 3}
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
-  Material: {fileID: 2100000, guid: f789fc3ab01eabf45ac85f736dc0b2d1, type: 2}
-  Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-  _speed: 0
+  _health: 100
+  playerScript: {fileID: 6946516412238050750, guid: d2b09726d2ef7eb4198f6ca442478743,
+    type: 3}
+  _speed: 10
+  PlayerSpawnPoint: {fileID: 1315970596649844862, guid: c9c14ad7cf2e4384b95d0b2632750ef8,
+    type: 3}

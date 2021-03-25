@@ -9,7 +9,6 @@ namespace Code
             if (col.TryGetComponent(out IApplyDamage applyDamage))
             {
                 applyDamage.ApplyDamage(1000f);
-                print("ubil");
             }
         }
     }

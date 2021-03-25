@@ -14,6 +14,12 @@ namespace Code
         private int _index = -1;
         private TrapInfo _current;
 
+        public int Index
+        {
+            get => _index;
+            set => _index = value;
+        }
+
         [Serializable]
         private struct TrapInfo
         {

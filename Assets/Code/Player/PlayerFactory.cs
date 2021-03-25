@@ -11,10 +11,21 @@ namespace Code
             _PlayerData = playerData;
         }
 
-        public Transform CreatePlayer()
+        public PlayerBall CreatePlayer()
         {
-            return new GameObject("player").AddMesh(_PlayerData.Mesh).AddMeshRenderer(_PlayerData.Material)
-                .AddSphereCollider().AddRigidBody(_PlayerData.Mass, _PlayerData.AngularDrag).transform;
+            var player = Object.Instantiate(_PlayerData.playerScript, _PlayerData.PlayerSpawnPoint.transform.position,
+                Quaternion.identity);
+            /* return new GameObject("player")
+                 .AddMesh(_PlayerData.Mesh)
+                 .AddMeshRenderer(_PlayerData.Material)
+                 .AddSphereCollider()
+                 .AddRigidBody(_PlayerData.Mass, _PlayerData.AngularDrag)
+                 .SetTransform(_PlayerData.PlayerSpawnPoint)
+                 .transform;
+                 */
+            player.name = "Player";
+            player.tag = "Player";
+            return player;
         }
     }
 }

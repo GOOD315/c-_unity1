@@ -8,9 +8,11 @@ namespace Code
     {
         [SerializeField] private string _PlayerDataPath;
         [SerializeField] private string _TrapsDataPath;
+        [SerializeField] private string _MainMenuDataPath;
 
         private PlayerData _player;
         private TrapData _trap;
+        private MainMenuData _mainMenuData;
 
         public PlayerData Player
         {
@@ -35,6 +37,19 @@ namespace Code
                 }
 
                 return _trap;
+            }
+        }
+
+        public MainMenuData MainMenuData
+        {
+            get
+            {
+                if (_mainMenuData == null)
+                {
+                    _mainMenuData = Load<MainMenuData>("Data/" + _MainMenuDataPath);
+                }
+                
+                return _mainMenuData;
             }
         }
 

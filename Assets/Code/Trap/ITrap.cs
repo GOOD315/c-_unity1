@@ -4,6 +4,6 @@ namespace Code
 {
     public interface ITrap
     {
-        event Action<int, TrapController> CallControllerOnTrigger;
+        event Action<int, int> CallTrapControllerOnTrigger;
     }
 }

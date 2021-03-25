@@ -45,18 +45,34 @@ namespace Code
 
         public void Initialization()
         {
+            for (var index = 0; index < _initializeControllers.Count; ++index)
+            {
+                _initializeControllers[index].Initialization();
+            }
         }
 
         public void Execute(float deltaTime)
         {
+            for (var index = 0; index < _executeControllers.Count; ++index)
+            {
+                _executeControllers[index].Execute(deltaTime);
+            }
         }
 
         public void LateExecute(float deltaTime)
         {
+            for (var index = 0; index < _lateControllers.Count; ++index)
+            {
+                _lateControllers[index].LateExecute(deltaTime);
+            }
         }
 
         public void Cleanup()
         {
+            for (var index = 0; index < _cleanupControllers.Count; ++index)
+            {
+                _cleanupControllers[index].Cleanup();
+            }
         }
     }
 }

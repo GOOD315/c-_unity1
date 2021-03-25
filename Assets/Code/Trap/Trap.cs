@@ -7,7 +7,8 @@ namespace Code
     public abstract class Trap : MonoBehaviour, ITrap
     {
         public abstract void TrapAction(Collider obj);
-        public event Action<int, TrapController> CallControllerOnTrigger;
+        public event Action<int, int> CallTrapControllerOnTrigger;
+        public event Action<Trap> CallPlayerBonusesControllerOnTrigger;
         private Rigidbody _rigidbody;
         private Transform _transform;
 
@@ -21,9 +22,10 @@ namespace Code
 
         private void OnTriggerEnter(Collider obj)
         {
-            CallControllerOnTrigger?.Invoke(obj.gameObject.GetInstanceID(), trapController);
+            CallTrapControllerOnTrigger?.Invoke(obj.gameObject.GetInstanceID(), gameObject.GetInstanceID());
+            CallPlayerBonusesControllerOnTrigger?.Invoke(this);
             TrapAction(obj);
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }
