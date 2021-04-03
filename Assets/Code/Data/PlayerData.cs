@@ -3,14 +3,14 @@
 namespace Code
 {
     [CreateAssetMenu(fileName = "PlayerSettings", menuName = "Data/Settings/PlayerSettings")]
-    public class PlayerData : ScriptableObject
+    public class PlayerData : ScriptableObject, IUnit
     {
-        public Material Material;
-        public Mesh Mesh;
+        [SerializeField] private float _health;
+        public PlayerBall playerScript;
         [SerializeField, Range(0, 100)] private float _speed;
-        public float Mass;
-        public float AngularDrag;
+        public Transform PlayerSpawnPoint;
 
-        public float Speed => _speed;
+        public float Speed => _speed; 
+        public float Health => _health;
     }
 }

@@ -4,6 +4,6 @@ namespace Code
 {
     public interface IPlayerFactory
     {
-        Transform CreatePlayer();
+        PlayerBall CreatePlayer();
     }
 }

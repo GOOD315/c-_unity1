@@ -8,6 +8,7 @@ namespace Code
     {
         [SerializeField] private string _PlayerDataPath;
         [SerializeField] private string _TrapsDataPath;
+        [SerializeField] private string _MainMenuDataPath;
 
         private PlayerData _player;
         private TrapData _trap;

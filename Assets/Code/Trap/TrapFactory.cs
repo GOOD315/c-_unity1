@@ -5,6 +5,7 @@ namespace Code
     public class TrapFactory : ITrapFactory
     {
         private readonly TrapData _data;
+        private ITrapFactory m_TrapFactoryImplementation;
 
         public TrapFactory(TrapData data)
         {
@@ -16,10 +17,9 @@ namespace Code
             get { return _data; }
         }
 
-        public GameObject CreateTrap(int index, Transform pos)
+        public GameObject CreateTrap(GameObject trap, Transform pos)
         {
-            var trap = _data.GetTrap(index);
-            return Object.Instantiate(trap, pos);
+            return Object.Instantiate(trap, pos.position, Quaternion.identity);
         }
     }
 }
