@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.PlayerLoop;
 
 namespace Code
@@ -43,7 +44,6 @@ namespace Code
 
         public static GameObject AddPlayerScript(this GameObject gameObject, PlayerBall playerBall)
         {
-            
             return gameObject;
         }
 

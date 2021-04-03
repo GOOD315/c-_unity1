@@ -10,7 +10,7 @@ namespace Code
         [SerializeField, Range(0, 100)] private float _speed;
         public Transform PlayerSpawnPoint;
 
-        public float Speed => _speed;
+        public float Speed => _speed; 
         public float Health => _health;
     }
 }

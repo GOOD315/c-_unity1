@@ -8,7 +8,7 @@ namespace Code
     public sealed class TrapInitialization : IInitialization
     {
         private readonly TrapFactory _trapFactory;
-        private TrapList _trapList;
+        private TrapData _trapData;
 
         private Dictionary<Transform, bool> spawnPoints = new Dictionary<Transform, bool>();
         private List<Transform> spawnPointsKeys = new List<Transform>();
@@ -19,12 +19,12 @@ namespace Code
         private PlayerBonusesController _playerBonusesController;
 
         public TrapInitialization(TrapFactory trapFactory, int getInstanceID, TrapController trapController,
-            PlayerBonusesController playerBonusesController, TrapList trapList)
+            PlayerBonusesController playerBonusesController, TrapData trapData)
         {
             _trapFactory = trapFactory;
-            _trapList = trapList;
             _getInstanceID = getInstanceID;
             _trapController = trapController;
+            _trapData = trapData;
             _playerBonusesController = playerBonusesController;
 
             GameObject[] spGameObjects = GameObject.FindGameObjectsWithTag("TrapSpawnPoint");
@@ -62,12 +62,12 @@ namespace Code
             var cnt = Random.Range(0, spawnPointsKeys.Count - 1);
             if (spawnPoints[spawnPointsKeys[cnt]] == false)
             {
-                var trap = _trapFactory.CreateTrap(_trapList.GetRandomTrap(), spawnPointsKeys[cnt]);
+                var trapInfo = _trapData.GetRandomTrap();
+                var trap = _trapFactory.CreateTrap(trapInfo.trapObject, spawnPointsKeys[cnt]);
 
                 _trapController.AddActiveTrap(trap);
 
                 var trapScr = trap.GetComponent<Trap>();
-                trapScr.trapController = _trapController;
                 trapScr.CallTrapControllerOnTrigger += CallTrapController;
                 trapScr.CallPlayerBonusesControllerOnTrigger += CallPlayerBonusesController;
 
@@ -77,6 +77,11 @@ namespace Code
             }
 
             return false;
+        }
+
+        public bool InitializeTrap(int f)
+        {
+            return true;
         }
 
         private void CallTrapController(int playerInstanceID, int trapInstanceID)
@@ -90,6 +95,14 @@ namespace Code
         private void CallPlayerBonusesController(Trap trap)
         {
             _playerBonusesController.PlayerGotBonus(trap);
+        }
+
+        private void ClearTraps()
+        {
+        }
+
+        private void LoadTraps()
+        {
         }
     }
 }

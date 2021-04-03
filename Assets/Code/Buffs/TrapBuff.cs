@@ -8,31 +8,40 @@ namespace Code.Buffs
         protected PlayerBall _player;
         protected bool _isActive;
         protected float _timer;
-        protected float _time;
+        protected BuffType _buffType;
+
+        public BuffType BuffType => _buffType;
+
+        public float Timer
+        {
+            get { return _timer; }
+
+            set { _timer = value; }
+        }
 
         public bool IsActive => _isActive;
 
-        public TrapBuff(PlayerBall player)
+        public TrapBuff()
         {
-            _player = player;
             _isActive = true;
         }
 
+
         public void Execute(float deltaTime)
         {
-            if (_timer >= _time)
+            if (_timer <= 0)
             {
                 _isActive = false;
             }
 
-            _timer += deltaTime;
+            _timer -= deltaTime;
         }
 
         public void Cleanup()
         {
         }
 
-        public abstract void Buff();
+        public abstract void Buff(PlayerBall player);
         public abstract void DeBuff();
     }
 }

@@ -7,7 +7,6 @@ namespace Code
     {
         private TrapData _trapData;
 
-
         public TrapList(TrapData trapData)
         {
             _trapData = trapData;

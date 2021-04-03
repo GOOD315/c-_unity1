@@ -11,21 +11,21 @@ namespace Code
 
         private TrapInitialization _trapInitialization;
         private TrapFactory _trapFactory;
-        private TrapList _trapList;
+        private TrapData _trapData;
         private PlayerBonusesController _playerBonusesController;
 
         public Dictionary<int, GameObject> CurrentActiveTraps => _currentActiveTraps;
 
         public TrapController(TrapFactory trapFactory, int getInstanceID,
-            PlayerBonusesController playerBonusesController, TrapList trapList)
+            PlayerBonusesController playerBonusesController)
         {
             _getInstanceID = getInstanceID;
             _trapFactory = trapFactory;
-            _trapList = trapList;
+            _trapData = trapFactory.Data;
             _playerBonusesController = playerBonusesController;
             _currentActiveTraps = new Dictionary<int, GameObject>();
             _trapInitialization =
-                new TrapInitialization(_trapFactory, _getInstanceID, this, _playerBonusesController, _trapList);
+                new TrapInitialization(_trapFactory, _getInstanceID, this, _playerBonusesController, _trapData);
         }
 
 
@@ -43,6 +43,20 @@ namespace Code
         {
             _currentActiveTraps.Remove(instanceID);
         }
-        
+
+        public void RemoveAllTraps()
+        {
+            foreach (var trap in _currentActiveTraps)
+            {
+                GameObject.Destroy(trap.Value);
+            }
+            
+            _currentActiveTraps = new Dictionary<int, GameObject>();
+            
+        }
+
+        public void LoadTraps()
+        {
+        }
     }
 }

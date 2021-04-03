@@ -11,11 +11,11 @@ namespace Code
             var inputInitialization = new InputInitialization();
             var playerFactory = new PlayerFactory(data.Player);
             var playerInitialization = new PlayerInitialization(playerFactory);
-            var playerBonusesController = new PlayerBonusesController(playerInitialization.GetPlayer());
+            var playerBonusesController = new PlayerBonusesController(playerInitialization.GetPlayer(), data.Trap);
             var trapFactory = new TrapFactory(data.Trap);
             var trapController = new TrapController(trapFactory,
                 playerInitialization.GetPlayer().gameObject.GetInstanceID(),
-                playerBonusesController, new TrapList(data.Trap));
+                playerBonusesController);
             controllers.Add(inputInitialization);
             controllers.Add(playerInitialization);
             controllers.Add(trapController);
@@ -27,8 +27,10 @@ namespace Code
             controllers.Add(new EndGameController());
 
 
+            Reference.BuffData = new BuffData();
             Reference.TrapController = trapController;
             Reference.PlayerBonusesController = playerBonusesController;
+            Reference.TrapData = data.Trap;
         }
     }
 }

@@ -9,12 +9,16 @@ namespace Code
     public class PlayerBonusesController : IInitialization, IExecute, ICleanup
     {
         private PlayerBall _player;
-        private List<TrapBuff> _trapBuffList;
+        private List<TrapBuff> _activeBuffList;
+        private TrapData _trapData;
 
-        public PlayerBonusesController(PlayerBall player)
+        public List<TrapBuff> TrapBuffList => _activeBuffList;
+
+        public PlayerBonusesController(PlayerBall player, TrapData trapData)
         {
             _player = player;
-            _trapBuffList = new List<TrapBuff>();
+            _activeBuffList = new List<TrapBuff>();
+            _trapData = trapData;
         }
 
         public void Initialization()
@@ -23,23 +27,26 @@ namespace Code
 
         public void Execute(float deltaTime)
         {
-            for (var i = 0; i < _trapBuffList.Count; i++)
+            for (var i = 0; i < _activeBuffList.Count; i++)
             {
-                var trap = _trapBuffList[i];
+                var trap = _activeBuffList[i];
 
                 if (trap.IsActive == true) trap.Execute(deltaTime);
                 else
                 {
                     trap.DeBuff();
                     trap.Cleanup();
-                    _trapBuffList.Remove(trap);
+                    _activeBuffList.Remove(trap);
                 }
             }
         }
 
         public void PlayerGotBonus(Trap trap)
         {
-            if (trap is HealingTrap)
+            trap.trapBuff.Buff(_player);
+            _activeBuffList.Add(trap.trapBuff);
+
+        /*    if (trap is HealingTrap)
             {
                 _player.Health += 50;
             }
@@ -53,21 +60,22 @@ namespace Code
             {
                 var slowBuff = new SlowBuff(_player);
                 slowBuff.Buff();
-                _trapBuffList.Add(slowBuff);
+                _activeBuffList.Add(slowBuff);
             }
 
             if (trap is HasteTrap)
             {
                 var hasteBuff = new HasteBuff(_player);
                 hasteBuff.Buff();
-                _trapBuffList.Add(hasteBuff);
+                _activeBuffList.Add(hasteBuff);
             }
 
             if (trap is DeathTrap)
             {
                 _player.Health = 0;
-            }
+            }*/
         }
+
 
         public void Cleanup()
         {

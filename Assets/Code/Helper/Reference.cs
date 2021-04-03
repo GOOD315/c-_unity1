@@ -12,6 +12,8 @@ namespace Code
         private static CanvasController _menuCanvas;
         private static TrapController _trapController;
         private static PlayerBonusesController _playerBonusesController;
+        private static TrapData _trapData;
+        private static BuffData _buffData;
 
         public static PlayerBall PlayerBall
         {
@@ -31,10 +33,7 @@ namespace Code
         {
             get
             {
-                if (_mainCamera == null)
-                {
-                    _mainCamera = Camera.main;
-                }
+                if (_mainCamera == null) _mainCamera = Camera.main; 
                 
                 return _mainCamera;
             }
@@ -56,27 +55,26 @@ namespace Code
 
         public static TrapController TrapController
         {
-            get
-            { 
-               return _trapController;
-            }
-            set
-            {
-                _trapController = value;
-            }
+            get { return _trapController; } 
+            set { _trapController = value; }
         }
 
         public static PlayerBonusesController PlayerBonusesController
         {
-            get
-            {
-                return _playerBonusesController;
+            get { return _playerBonusesController; } 
+            set { _playerBonusesController = value; }
+        }
 
-            }
-            set
-            {
-                _playerBonusesController = value;
-            }
+        public static TrapData TrapData
+        {
+            get { return   _trapData; }
+            set { _trapData = value; }
+        }
+        
+        public static BuffData BuffData
+        {
+            get { return   _buffData; }
+            set { _buffData = value; }
         }
     }
 }

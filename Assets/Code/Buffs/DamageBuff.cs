@@ -1,24 +1,22 @@
-﻿using UnityEngine;
+﻿using Code.Buff;
 
 namespace Code.Buffs
 {
-    public class SlowBuff : TrapBuff
+    public class DamageBuff : TrapBuff, IDamageBuff
     {
-        public SlowBuff()
+        public DamageBuff()
         {
-            _buffType = BuffType.SlowBuff;
-            _timer = 100;
+            _buffType = BuffType.DamageBuff;
         }
 
         public override void Buff(PlayerBall player)
         {
             _player = player;
-            _player.Speed -= 5;
+            _player.Health -= 50;
         }
 
         public override void DeBuff()
         {
-            _player.Speed += 5;
         }
     }
 }

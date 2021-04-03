@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Code.Buffs;
 using UnityEngine;
 
 namespace Code.SaveData
@@ -11,6 +12,34 @@ namespace Code.SaveData
         public string Name;
         public Vector3Serializable Position;
         public CurrentActiveTrapsList currentActiveTrapsList;
+        public List<TrapBuff> playerBuffs;
+        private BuffData _buffData;
+
+        public SavedData()
+        {
+            _buffData = Reference.BuffData;
+            currentActiveTrapsList = new CurrentActiveTrapsList();
+        }
+
+        public override string ToString() =>
+            $"Name - {Name}, Pos - {Position} \ncurrent traps: \n{currentActiveTrapsList} \ncurrent buffs: \n{playerBuffs}";
+
+        public void AddBuff(string name, string timer)
+        {
+            float _timer;
+
+            if (float.TryParse(timer, out _timer))
+            {
+                foreach (TrapBuff buff in _buffData)
+                {
+                    if (name == buff.BuffType.ToString())
+                    {
+                        var thisBuff = buff;
+                        thisBuff.Timer = _timer;
+                    }
+                }
+            }
+        }
     }
 
     [Serializable]

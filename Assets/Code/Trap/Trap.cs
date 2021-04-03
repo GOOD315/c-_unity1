@@ -1,4 +1,5 @@
 ﻿using System;
+using Code.Buffs;
 using UnityEngine;
 using UnityEngine.XR.WSA;
 
@@ -6,13 +7,14 @@ namespace Code
 {
     public abstract class Trap : MonoBehaviour, ITrap
     {
+        public TrapBuff trapBuff;
+        public TrapType trapType;
         public abstract void TrapAction(Collider obj);
         public event Action<int, int> CallTrapControllerOnTrigger;
         public event Action<Trap> CallPlayerBonusesControllerOnTrigger;
         private Rigidbody _rigidbody;
         private Transform _transform;
 
-        public TrapController trapController;
 
         private void Start()
         {

@@ -23,6 +23,8 @@ namespace Code
                  .SetTransform(_PlayerData.PlayerSpawnPoint)
                  .transform;
                  */
+            player.Health = _PlayerData.Health;
+            player.Speed = _PlayerData.Speed;
             player.name = "Player";
             player.tag = "Player";
             return player;

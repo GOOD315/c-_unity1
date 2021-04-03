@@ -12,7 +12,6 @@ namespace Code
 
         private PlayerData _player;
         private TrapData _trap;
-        private MainMenuData _mainMenuData;
 
         public PlayerData Player
         {
@@ -37,19 +36,6 @@ namespace Code
                 }
 
                 return _trap;
-            }
-        }
-
-        public MainMenuData MainMenuData
-        {
-            get
-            {
-                if (_mainMenuData == null)
-                {
-                    _mainMenuData = Load<MainMenuData>("Data/" + _MainMenuDataPath);
-                }
-                
-                return _mainMenuData;
             }
         }
 

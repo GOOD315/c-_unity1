@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using Code.Buffs;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using Random = UnityEngine.Random;
 
 namespace Code
 {
@@ -21,7 +23,7 @@ namespace Code
         }
 
         [Serializable]
-        private struct TrapInfo
+        public struct TrapInfo
         {
             public GameObject trapObject;
         }
@@ -32,6 +34,12 @@ namespace Code
         {
             var trapInfo = _trapInfos[index];
             return trapInfo.trapObject;
+        }
+
+        public TrapInfo GetRandomTrap()
+        {
+            var rnd = Random.Range(0, _trapInfos.Count);
+            return _trapInfos[rnd];
         }
 
         public bool MoveNext()
