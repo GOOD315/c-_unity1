@@ -1,0 +1,17 @@
+<SaveData>
+  <Player value="Dima">
+    <Position posX="38,39593" posY="1,5" posZ="27,20015" />
+  </Player>
+  <TrapsList Length="6">
+    <Trap Type="HealingTrap" posX="45" posY="2" posZ="35" />
+    <Trap Type="HasteTrap" posX="15" posY="2" posZ="-15" />
+    <Trap Type="HealingTrap" posX="45" posY="2" posZ="-5" />
+    <Trap Type="HealingTrap" posX="35" posY="2" posZ="15" />
+    <Trap Type="DeathTrap" posX="-15" posY="2" posZ="-35" />
+    <Trap Type="DeathTrap" posX="5" posY="2" posZ="15" />
+  </TrapsList>
+  <BuffsList Lenght="2">
+    <Buff Type="SlowBuff" Timer="82,16837" />
+    <Buff Type="SlowBuff" Timer="91,74794" />
+  </BuffsList>
+</SaveData>

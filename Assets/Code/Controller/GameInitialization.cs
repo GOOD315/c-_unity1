@@ -1,4 +1,5 @@
 ﻿using Code.Canvas;
+using Code.MiniMap;
 using UnityEngine;
 
 namespace Code
@@ -24,6 +25,7 @@ namespace Code
             controllers.Add(new MoveController(inputInitialization.GetInput(), playerInitialization.GetPlayer(),
                 data.Player));
             controllers.Add(new CameraInGameController(playerInitialization.GetPlayer(), camera.transform));
+            controllers.Add(new MiniMapScr(playerInitialization.GetPlayer().transform));
             controllers.Add(new EndGameController());
 
 

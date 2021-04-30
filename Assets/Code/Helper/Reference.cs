@@ -1,7 +1,6 @@
 ﻿using Code.Canvas;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Code
 {

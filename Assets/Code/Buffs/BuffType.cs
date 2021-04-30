@@ -7,6 +7,7 @@
         DamageBuff = 2,
         HealingBuff = 3,
         DeathBuff = 4,
-        HasteBuff = 5
+        HasteBuff = 5,
+        JumpBuff = 6
     }
 }
