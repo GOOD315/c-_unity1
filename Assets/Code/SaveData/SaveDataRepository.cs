@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Linq.Expressions;
 using UnityEngine;
 
 namespace Code.SaveData
@@ -8,7 +9,7 @@ namespace Code.SaveData
         private readonly IData<SavedData> _data;
 
         private const string _folderName = "dataSave";
-        private const string _fileName = "data.bat";
+        private const string _fileName = "data.zxc";
         private readonly string _path;
 
         public SaveDataRepository()
@@ -36,17 +37,23 @@ namespace Code.SaveData
             _data.Save(saveData, Path.Combine(_path, _fileName));
         }
 
-        public void Load()
+        public bool Load(out SavedData savedData)
         {
             var player = Reference.PlayerBall;
             var trapController = Reference.TrapController;
             var bonusesController = Reference.PlayerBonusesController;
 
+
             var file = Path.Combine(_path, _fileName);
-            if (!File.Exists(file)) return;
-            var newPlayer = _data.Load(file);
+            if (!File.Exists(file))
+            {
+                savedData = new SavedData();
+                return false;
+            }
+
+            savedData = _data.Load(file);
             trapController.RemoveAllTraps();
-            
+            return true;
         }
     }
 }

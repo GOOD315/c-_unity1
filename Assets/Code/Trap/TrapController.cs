@@ -31,7 +31,7 @@ namespace Code
 
         public void Initialization()
         {
-            _trapInitialization.SpawnTraps(10);
+            _trapInitialization.SpawnTraps(30);
         }
 
         public void AddActiveTrap(GameObject trapObj)

@@ -1,15 +1,16 @@
 ﻿using System;
+using Code.SaveData;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace Code.Canvas
 {
     public class CanvasController : MonoBehaviour
     {
         [SerializeField] private LocationsLoader LocationsLoader;
+        private SaveDataRepository _saveDataRepository;
         private bool _isPaused = true;
 
         [SerializeField] private GameObject mainMenuCanvas;
@@ -28,6 +29,12 @@ namespace Code.Canvas
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                if (_isPaused)
+                {
+                    UnpauseGame();
+                    return;
+                }
+
                 PauseGame();
             }
         }
@@ -35,11 +42,24 @@ namespace Code.Canvas
         public void StartGame()
         {
             LocationsLoader.LoadLocation();
-            mainMenuCanvas.SetActive(false);
-            gameMenuCanvas.SetActive(false);
+            UnpauseGame();
+        }
 
-            _isPaused = false;
-            LocationsLoader.IsPaused = false;
+        public void SaveGame()
+        {
+            if (_saveDataRepository == null) _saveDataRepository = new SaveDataRepository();
+            _saveDataRepository.Save();
+        }
+
+        public void LoadGame()
+        {
+            if (_saveDataRepository == null) _saveDataRepository = new SaveDataRepository();
+            if (_saveDataRepository.Load(out var saveData))
+            {
+                LocationsLoader.LoadLocation(saveData);
+
+                UnpauseGame();
+            }
         }
 
         public void EndGame()
@@ -63,12 +83,6 @@ namespace Code.Canvas
 
         public void PauseGame()
         {
-            if (_isPaused)
-            {
-                UnpauseGame();
-                return;
-            }
-
             Time.timeScale = 0;
             mainMenuCanvas.SetActive(false);
             gameMenuCanvas.SetActive(true);

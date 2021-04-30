@@ -15,16 +15,13 @@ MonoBehaviour:
   _trapInfos:
   - trapObject: {fileID: 9196287325095014241, guid: 63b8b7ec5400ccd45a6c472947474770,
       type: 3}
-    trapType: 2
   - trapObject: {fileID: 9196287325095014241, guid: d7e02a7562d83d244a4cb8200243b593,
       type: 3}
-    trapType: 4
   - trapObject: {fileID: 9196287325095014241, guid: 5792d4db908440f43868024006359c70,
       type: 3}
-    trapType: 0
   - trapObject: {fileID: 9196287325095014241, guid: 9e90fe8c00d84fd44ac0db31bb5f732e,
       type: 3}
-    trapType: 3
   - trapObject: {fileID: 9196287325095014241, guid: 9162353057b1f67488003f7c9cbb844d,
       type: 3}
-    trapType: 1
+  - trapObject: {fileID: 9196287325095014241, guid: 8144ddbfedd2c804c99df96651301f99,
+      type: 3}

@@ -1,4 +1,5 @@
 ﻿using System;
+using Code.SaveData;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -36,6 +37,12 @@ namespace Code
         }
 
         public void LoadLocation()
+        {
+            _gameStarter = new GameStarter();
+            _isPaused = false;
+        }
+
+        public void LoadLocation(SavedData savedData)
         {
             _gameStarter = new GameStarter();
             _isPaused = false;

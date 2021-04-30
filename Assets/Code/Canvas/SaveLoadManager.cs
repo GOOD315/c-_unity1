@@ -16,7 +16,9 @@ namespace Code.Canvas
         public void LoadGame()
         {
             if (_saveDataRepository == null) _saveDataRepository = new SaveDataRepository();
-            _saveDataRepository.Load();
+            if (_saveDataRepository.Load(out var saveData))
+            {
+            }
         }
     }
 }

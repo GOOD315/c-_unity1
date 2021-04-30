@@ -6,6 +6,7 @@
         SlowTrap = 1,
         DamageTrap = 2,
         HealingTrap = 3,
-        DeathTrap = 4
+        DeathTrap = 4,
+        JumpTrap = 5
     }
 }
