@@ -17,10 +17,12 @@ namespace Code
             var trapController = new TrapController(trapFactory,
                 playerInitialization.GetPlayer().gameObject.GetInstanceID(),
                 playerBonusesController);
+            
             controllers.Add(inputInitialization);
             controllers.Add(playerInitialization);
             controllers.Add(trapController);
             controllers.Add(playerBonusesController);
+            
             controllers.Add(new InputController(inputInitialization.GetInput()));
             controllers.Add(new MoveController(inputInitialization.GetInput(), playerInitialization.GetPlayer(),
                 data.Player));
@@ -28,6 +30,7 @@ namespace Code
             controllers.Add(new MiniMapScr(playerInitialization.GetPlayer().transform));
             controllers.Add(new EndGameController());
 
+            controllers.Add(new PlayerShootController(playerInitialization.GetPlayer()));
 
             Reference.BuffData = new BuffData();
             Reference.TrapController = trapController;

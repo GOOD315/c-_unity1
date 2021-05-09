@@ -92,9 +92,12 @@ namespace Code
             }
         }
 
-        private void CallPlayerBonusesController(Trap trap)
+        private void CallPlayerBonusesController(int playerInstanceID, int trapInstanceID, Trap trap)
         {
-            _playerBonusesController.PlayerGotBonus(trap);
+            if (playerInstanceID == _getInstanceID)
+            {
+                _playerBonusesController.PlayerGotBonus(trap);
+            }
         }
 
         private void ClearTraps()

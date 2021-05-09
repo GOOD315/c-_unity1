@@ -15,6 +15,6 @@ MonoBehaviour:
   _health: 100
   playerScript: {fileID: 6946516412238050750, guid: d2b09726d2ef7eb4198f6ca442478743,
     type: 3}
-  _speed: 10
+  _speed: 5
   PlayerSpawnPoint: {fileID: 1315970596649844862, guid: c9c14ad7cf2e4384b95d0b2632750ef8,
     type: 3}

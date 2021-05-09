@@ -32,6 +32,7 @@ namespace Code
 
         public GameObject GetTrap(int index)
         {
+            if (index > _trapInfos.Count) return _trapInfos[0].trapObject;
             var trapInfo = _trapInfos[index];
             return trapInfo.trapObject;
         }

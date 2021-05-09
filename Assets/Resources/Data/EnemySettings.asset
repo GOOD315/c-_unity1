@@ -9,13 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aade60222a524eb492c01d65dbcf557b, type: 3}
-  m_Name: BuffData
+  m_Script: {fileID: 11500000, guid: e5306e12c9d6496fa3e39be29ce9f67e, type: 3}
+  m_Name: EnemySettings
   m_EditorClassIdentifier: 
-  _index: -1
-  _trapBuffs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  enemyList:
+  - enemyPrefab: {fileID: 0}
