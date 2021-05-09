@@ -11,7 +11,7 @@ namespace Code
         public TrapType trapType;
         public abstract void TrapAction(Collider obj);
         public event Action<int, int> CallTrapControllerOnTrigger;
-        public event Action<Trap> CallPlayerBonusesControllerOnTrigger;
+        public event Action<int, int, Trap> CallPlayerBonusesControllerOnTrigger;
         private Rigidbody _rigidbody;
         private Transform _transform;
 
@@ -25,7 +25,8 @@ namespace Code
         private void OnTriggerEnter(Collider obj)
         {
             CallTrapControllerOnTrigger?.Invoke(obj.gameObject.GetInstanceID(), gameObject.GetInstanceID());
-            CallPlayerBonusesControllerOnTrigger?.Invoke(this);
+            CallPlayerBonusesControllerOnTrigger?.Invoke(obj.gameObject.GetInstanceID(), gameObject.GetInstanceID(),
+                this);
             TrapAction(obj);
             Destroy(gameObject);
         }
