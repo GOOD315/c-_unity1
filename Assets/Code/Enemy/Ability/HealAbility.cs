@@ -1,4 +1,6 @@
-﻿namespace Code.Enemy
+﻿using UnityEngine;
+
+namespace Code.Enemy
 {
     public class HealAbility : Ability
     {
@@ -8,7 +10,7 @@
 
         public override void Use()
         {
-            
+            Debug.Log("press f");
         }
     }
 }
