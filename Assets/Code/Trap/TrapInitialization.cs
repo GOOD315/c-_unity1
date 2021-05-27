@@ -13,7 +13,6 @@ namespace Code
         private Dictionary<Transform, bool> spawnPoints = new Dictionary<Transform, bool>();
         private List<Transform> spawnPointsKeys = new List<Transform>();
 
-
         private readonly int _getInstanceID;
         private TrapController _trapController;
         private PlayerBonusesController _playerBonusesController;
