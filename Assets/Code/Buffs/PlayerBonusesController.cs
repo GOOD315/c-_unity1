@@ -45,35 +45,6 @@ namespace Code
         {
             trap.trapBuff.Buff(_player);
             _activeBuffList.Add(trap.trapBuff);
-
-        /*    if (trap is HealingTrap)
-            {
-                _player.Health += 50;
-            }
-
-            if (trap is DamageTrap)
-            {
-                _player.Health -= 50;
-            }
-
-            if (trap is SlowTrap)
-            {
-                var slowBuff = new SlowBuff(_player);
-                slowBuff.Buff();
-                _activeBuffList.Add(slowBuff);
-            }
-
-            if (trap is HasteTrap)
-            {
-                var hasteBuff = new HasteBuff(_player);
-                hasteBuff.Buff();
-                _activeBuffList.Add(hasteBuff);
-            }
-
-            if (trap is DeathTrap)
-            {
-                _player.Health = 0;
-            }*/
         }
 
 

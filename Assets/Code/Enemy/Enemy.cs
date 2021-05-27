@@ -18,6 +18,7 @@ namespace Code.Enemy
         private Rigidbody _rigidbody;
 
         public EnemyShoot EnemyShoot;
+        public EnemyAbilities EnemyAbilities;
 
         float Health
         {
